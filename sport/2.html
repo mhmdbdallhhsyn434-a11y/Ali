@@ -5,22 +5,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yafa Sport</title>
-  <style>
-    :root{ --card-width:300px; --card-gap:20px; --accent:#0b74de; }
-    body{font-family:Arial, Helvetica, sans-serif;margin:24px;background:#0c0c0c;color:#222}
-    h1{text-align:center;margin-bottom:18px}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--card-width),1fr));gap:var(--card-gap);justify-items:center}
-    .card {
-  width: 100%;
-  max-width: 300px;
-  background: #fcfbfb;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+<style>
+:root {
+  --card-width: 300px;
+  --card-gap: 20px;
+  --accent: #0b74de;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #0c0c0c;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  margin: 10px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
 }
 
 .card img {
@@ -29,37 +49,218 @@
   display: block;
 }
 
-.cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 10px;
+.card .content {
+  padding: 15px;
+  text-align: center;
 }
 
-@media (max-width: 600px) {
+.card .club-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* ✅ تحسينات للهواتف */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr; /* عرض كرت واحد فقط */
+    gap: 15px;
+  }
+
   .card {
-    max-width: 90%;
+    max-width: 100%;
+  }
+
+  .card .club-name {
+    font-size: 16px;
   }
 }
-    .media{width:100%;height:300px;display:flex;align-items:center;justify-content:center;background:#fcfbfb}
-    .media img{max-width:100%;max-height:100%;object-fit:contain}
-    .content{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
-    .club-name{font-weight:700;font-size:16px}
-    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-    .price{font-weight:700}
-    .size-select{display:flex;gap:6px;align-items:center}
-    .size-select label{font-size:13px}
-    select{padding:6px;border-radius:6px;border:1px solid #fdfbfb}
-    button.add{background:var(--accent);color:#fffdfd;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer}
-    button.add:active{transform:translateY(1px)}
-    .toast{display:none;padding:8px 10px;border-radius:8px;background:#0f8f3e;color:#fff;font-weight:700;font-size:13px;text-align:center}
-    
-    @media(min-width:1100px){
-      .gallery{grid-template-columns:repeat(3,1fr)}
-      .card{max-width:340px}
-    }
-  </style>
+
+/* ✅ للشاشات الكبيرة جداً */
+@media (min-width: 1100px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+  </style><style>
+:root {
+  --card-width: 300px;
+  --card-gap: 20px;
+  --accent: #0b74de;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #0c0c0c;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card .content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card .club-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* ✅ تحسينات للهواتف */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr; /* عرض كرت واحد فقط */
+    gap: 15px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .card .club-name {
+    font-size: 16px;
+  }
+}
+
+/* ✅<style>
+:root {
+  --card-width: 300px;
+  --card-gap: 20px;
+  --accent: #0b74de;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  background: #0c0c0c;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card .content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card .club-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* ✅ تحسينات للهواتف */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr; /* عرض كرت واحد فقط */
+    gap: 15px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .card .club-name {
+    font-size: 16px;
+  }
+}
+
+/* ✅ للشاشات الكبيرة جداً */
+@media (min-width: 1100px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+ 
+@media (min-width: 1100px) {
+  .cards-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+  </style> 
 </head>
 <body text="white" bgcolor="black">
   <h1>Shirts Gallery — 18 Items</h1>
@@ -591,3 +792,4 @@
   </script></body>
 
 </html>
+
