@@ -47,13 +47,20 @@
     }
 
     .icon {
-      width:200px;
-      height:200px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid white;
-      transition: transform 0.3s;
-    }
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  transition: transform 0.3s;
+}
+
+@media (max-width: 600px) {
+  .icon {
+    width: 120px;
+    height: 120px;
+  }
+}
 
     .icon:hover {
       transform: scale(1.1);
@@ -105,3 +112,4 @@ a:hover{ color: rgb(2, 255, 107);}
 </body>
 
 </html>
+
