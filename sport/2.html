@@ -1,0 +1,561 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yafa Sport</title>
+  <style>
+    :root{ --card-width:300px; --card-gap:20px; --accent:#0b74de; }
+    body{font-family:Arial, Helvetica, sans-serif;margin:24px;background:#0c0c0c;color:#222}
+    h1{text-align:center;margin-bottom:18px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(var(--card-width),1fr));gap:var(--card-gap);justify-items:center}
+    .card{width:100%;max-width:var(--card-width);background:#fcfbfb;border-radius:10px;box-shadow:0 6px 18px rgba(242, 242, 243, 0.08);overflow:hidden;display:flex;flex-direction:column;align-items:stretch}
+    .media{width:100%;height:300px;display:flex;align-items:center;justify-content:center;background:#fcfbfb}
+    .media img{max-width:100%;max-height:100%;object-fit:contain}
+    .content{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+    .club-name{font-weight:700;font-size:16px}
+    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+    .price{font-weight:700}
+    .size-select{display:flex;gap:6px;align-items:center}
+    .size-select label{font-size:13px}
+    select{padding:6px;border-radius:6px;border:1px solid #fdfbfb}
+    button.add{background:var(--accent);color:#fffdfd;border:none;padding:10px;border-radius:8px;font-weight:700;cursor:pointer}
+    button.add:active{transform:translateY(1px)}
+    .toast{display:none;padding:8px 10px;border-radius:8px;background:#0f8f3e;color:#fff;font-weight:700;font-size:13px;text-align:center}
+    
+    @media(min-width:1100px){
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .card{max-width:340px}
+    }
+  </style>
+</head>
+<body text="white" bgcolor="black">
+  <h1>Shirts Gallery — 18 Items</h1>
+  <p style="text-align:center;margin-bottom:12px">
+    <div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+
+<div class="card">
+  <div class="media"><img src="ph/1.jpg" alt="Club 1 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Rial madrid</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-1">Size</label>
+        <select id="size-1" data-item="1">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+          <option value="XX">XX</option>
+        </select>
+      </div>
+      <div class="price">$7500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 1" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+  
+<div class="card">
+  <div class="media"><img src="ph/2.jpg" alt="Club 2 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Rial madrid</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-2">Size</label>
+        <select id="size-2" data-item="2">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 2" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+  
+
+<div class="card">
+  <div class="media"><img src="ph/3.jpg" alt="Club 3 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Rial madrid</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-3">Size</label>
+        <select id="size-3" data-item="3">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 3" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+
+<div class="card">
+  <div class="media"><img src="ph/4.jpg" alt="Club 4 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Borussia Dortmund</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-4">Size</label>
+        <select id="size-4" data-item="4">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 4" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/5.jpg" alt="Club 5 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Borussia Dortmund</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-5">Size</label>
+        <select id="size-5" data-item="5">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 5" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="media"><img src="ph/6.webp" alt="Club 6 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Borussia Dortmund</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-6">Size</label>
+        <select id="size-6" data-item="6">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 6" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+<div class="card">
+  <div class="media"><img src="ph/7.jpg" alt="Club 7 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester united</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-7">Size</label>
+        <select id="size-7" data-item="7">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 7" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/8.jpg" alt="Club 8 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester united</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-8">Size</label>
+        <select id="size-8" data-item="8">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 8" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/9.jpg" alt="Club 9 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester united</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-9">Size</label>
+        <select id="size-9" data-item="9">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 9" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+<div class="card">
+  <div class="media"><img src="ph/10.webp" alt="Club 10 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Barcelona</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-10">Size</label>
+        <select id="size-10" data-item="10">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 10" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="media"><img src="ph/11.jpg" alt="Club 11 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Barcelona</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-11">Size</label>
+        <select id="size-11" data-item="11">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 11" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/12.jpg" alt="Club 12 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Barcelona</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-12">Size</label>
+        <select id="size-12" data-item="12">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 12" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+<div class="card">
+  <div class="media"><img src="ph/13.jpg" alt="Club 13 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Milan</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-13">Size</label>
+        <select id="size-13" data-item="13">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 13" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/14.jpg" alt="Club 14 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Milan</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-14">Size</label>
+        <select id="size-14" data-item="14">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 14" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/15.jpg" alt="Club 15 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Milan</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-15">Size</label>
+        <select id="size-15" data-item="15">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 15" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+<div class="card">
+  <div class="media"><img src="ph/16.jpg" alt="Club 16 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester city</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-16">Size</label>
+        <select id="size-16" data-item="16">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 16" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/17.jpeg" alt="Club 17 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester city</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-17">Size</label>
+        <select id="size-17" data-item="17">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 17" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="media"><img src="ph/18.jpg" alt="Club 18 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Manchester city</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-18">Size</label>
+        <select id="size-18" data-item="18">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 18" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+<div style="display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top:50px ;
+  ">
+<div class="card">
+  <div class="media"><img src="ph/28.jpg" alt="Club 16 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Bayern munich</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-16">Size</label>
+        <select id="size-16" data-item="16">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 16" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="media"><img src="ph/29.jpg" alt="Club 17 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Bayern munich</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-17">Size</label>
+        <select id="size-17" data-item="17">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$6,000</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 17" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="media"><img src="ph/gm5317-6.jpg" alt="Club 18 Shirt"></div>
+  <div class="content">
+    <div class="club-name">Bayern munich</div>
+    <div class="meta">
+      <div class="size-select">
+        <label for="size-18">Size</label>
+        <select id="size-18" data-item="18">
+          <option value="X">X</option>
+          <option value="M" selected>M</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="price">$7500</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+      <button class="add" data-name="Club 18" data-price="6000"><b>اضف الى السلة</b></button>
+      <div class="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</div>
+  </div>  <script>
+  
+    document.querySelectorAll('button.add').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var name = btn.dataset.name || 'Item';
+        var price = btn.dataset.price || '0';
+        
+        var toast = btn.parentElement.querySelector('.toast');
+        if(!toast) return;
+        toast.textContent = 'تم الإضافة إلى السلة — ' + name + ' (' + (btn.previousElementSibling && btn.previousElementSibling.value ? btn.previousElementSibling.value : '') + ')';
+        toast.style.display = 'inline-block';
+      
+        setTimeout(function(){ toast.style.display = 'none'; },2500);
+      });
+    });
+  </script></body>
+</html>
