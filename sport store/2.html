@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yafa Sport</title>
+  <style>
+    :root{
+      --card-width:300px;
+      --card-gap:20px;
+      --accent:#0b74de;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      margin:0;
+      background:#0c0c0c;
+      color:#fff;
+    }
+
+    h1{
+      text-align:center;
+      margin:16px 0;
+      font-size:22px;
+    }
+
+    .cart-bar{
+      position:sticky;
+      top:0;
+      width:100%;
+      background:#111;
+      padding:12px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      font-weight:bold;
+      z-index:100;
+      box-shadow:0 3px 10px rgba(0,0,0,0.3);
+      border-bottom:1px solid #222;
+    }
+    .cart-bar span{
+      font-size:16px;
+    }
+    .cart-bar .total{
+      color:var(--accent);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(var(--card-width),1fr));
+      gap:var(--card-gap);
+      justify-items:center;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--card-width);
+      background:#fcfbfb;
+      border-radius:10px;
+      color:#222;
+      box-shadow:0 6px 18px rgba(242,242,243,0.1);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .media{
+      width:100%;
+      height:260px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#fff;
+    }
+
+    .media img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+    }
+
+    .content{
+      padding:12px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .club-name{
+      font-weight:700;
+      font-size:16px;
+    }
+
+    .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .price{
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    .size-select{
+      display:flex;
+      gap:6px;
+      align-items:center;
+    }
+    .size-select label{
+      font-size:13px;
+      font-weight: 800;
+    }
+    select{
+      padding:6px 8px;
+      border-radius:6px;
+      border:1px solid #ddd;
+      font-weight: 800;
+    }
+
+    button.add{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px;
+      border-radius:8px;
+      font-weight:700;
+      cursor:pointer;
+      font-size:15px;
+      transition:background 0.2s, transform 0.1s;
+    }
+    button.add:hover{
+      background:#095fb5;
+    }
+    button.add:active{
+      transform:scale(0.98);
+    }
+
+    .toast{
+      display:none;
+      padding:6px 8px;
+      border-radius:6px;
+      background:#0f8f3e;
+      color:#fff;
+      font-weight:700;
+      font-size:13px;
+      text-align:center;
+      margin-top:6px;
+    }
+
+    @media(max-width:768px){
+      :root{--card-width:90%;--card-gap:14px;}
+      h1{font-size:20px;}
+      .media{height:220px;}
+      button.add{font-size:14px;padding:8px;}
+      select{font-size:13px;padding:5px;}
+      .cart-bar{flex-direction:column;gap:6px;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-bar">
+    🛒 المنتجات: <span id="cart-count">0</span> | 💰 المجموع: <span id="cart-total">0</span> $
+  </div>
+
+  <h1>Boots sport</h1>
+
+  <div class="gallery">
+    <div class="card">
+      <div class="media"><img src="yo/1.jpg" alt="Club 1 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 1</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>        </div>
+          <div class="price">price:7500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/2.jpg" alt="Club 2 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 2</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/3.jpeg" alt="Club 3 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 3</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="6500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/4.jpg" alt="Club 4 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 4</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/5.jpg" alt="Club 5 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 5</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/6.jpeg" alt="Club 6 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 6</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/7.jpeg" alt="Club 7 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 7</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/8.jpeg" alt="Club 8 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 8</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/9.jpeg" alt="Club 9 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 9</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="6500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/10.jpeg" alt="Club 10 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 10</div>
+        <div class="meta">
+          <div class="size-select">
+            <label for="size-10">Size</label>
+            <select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+          </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+          <button class="add" data-name="Club 10" data-price="6500"><b>اضف الى السلة</b></button>
+          <div class="toast" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="media"><img src="yo/11.jpg" alt="Club 11 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 11</div>
+        <div class="meta">
+          <div class="size-select">
+            <label for="size-11">Size</label>
+            <select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+          </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+          <button class="add" data-name="Club 11" data-price="6500"><b>اضف الى السلة</b></button>
+          <div class="toast" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="media"><img src="yo/12.jpg" alt="Club 12 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 12</div>
+        <div class="meta">
+          <div class="size-select">
+            <label for="size-12">Size</label>
+            <select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+          </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+          <button class="add" data-name="Club 12" data-price="6500"><b>اضف الى السلة</b></button>
+          <div class="toast" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gallery">
+    <div class="card">
+      <div class="media"><img src="yo/13.jpg" alt="Club 13 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 13</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/14.jpg" alt="Club 14 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 14</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:7500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/15.jpg" alt="Club 15 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 15</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+        </div>
+          <div class="price">price:6500</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="6500">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="media"><img src="yo/16.jpg" alt="Club 16 Shirt"></div>
+      <div class="content">
+        <div class="club-name">Boot 16</div>
+        <div class="meta">
+          <div class="size-select">
+            <label>Size</label>
+            
+<select id="size-12" data-item="12">
+              <option value="39">39</option>
+              <option value="40" selected>40</option>
+              <option value="41">41</option>
+            </select>
+            </div>
+          <div class="price">price:7000</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <button class="add" data-price="7000">اضف الى السلة</button>
+          <div class="toast"></div>
+        </div>
+      </div>
+    </div>
+    
+     <script>
+  // متغيرات لتخزين عدد المنتجات والمجموع الكلي
+  let cartCount = 0;
+  let cartTotal = 0;
+
+  // تحديث شريط السلة
+  function updateCart() {
+    document.getElementById('cart-count').textContent = cartCount;
+    document.getElementById('cart-total').textContent = cartTotal;
+  }
+
+  // اختيار كل أزرار "اضف الى السلة"
+  document.querySelectorAll('button.add').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      // **تحديث منطق الحصول على السعر ليكون أكثر موثوقية**
+      let price = 0;
+      
+      // 1. محاولة قراءة من data-price أولاً (وهو ما تم تصحيحه الآن)
+      let priceAttr = btn.dataset.price;
+      if (priceAttr) {
+        // تنظيف القيمة من أي رموز أو فواصل قبل التحويل
+        price = parseFloat(priceAttr.replace(/[^0-9.]/g, '') || '0');
+      }
+
+      // إذا كانت data-price غير صالحة، حاول قراءة من عنصر .price
+      if (price === 0) {
+        let priceElement = btn.closest('.card').querySelector('.price');
+        if (priceElement) {
+          // تنظيف القيمة من أي رموز أو فواصل قبل التحويل
+          price = parseFloat(priceElement.textContent.replace(/[^0-9.]/g, '') || '0');
+        }
+      }
+
+      if (price > 0) {
+        // زيادة عدد المنتجات والمجموع
+        cartCount++;
+        cartTotal += price;
+
+        // تحديث السلة
+        updateCart();
+
+        // اظهار رسالة مؤقتة
+        let toast = btn.parentElement.querySelector('.toast');
+        if(!toast) return;
+        let sizeSelect = btn.closest('.card').querySelector('select'); // استخدم closest للعثور على select
+        let size = sizeSelect ? sizeSelect.value : '';
+        toast.textContent = `تم الإضافة: ${size} — ${btn.closest('.content').querySelector('.club-name').textContent}`; // استخدم closest للعثور على club-name
+        toast.style.display = 'inline-block';
+        setTimeout(()=>{toast.style.display='none';},2500);
+      }
+    });
+  });
+</script>
+  </div>
+</body>
+</html>
